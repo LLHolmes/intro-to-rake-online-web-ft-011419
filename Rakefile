@@ -8,12 +8,15 @@ namespace :greeting do
   task :hola do
     puts "hola de Rake!"
   end
-  
-  namespace :db do
-    desc 'migrate changes to your database'
-    task :migrate => :environment do
-      Student.create_table
-    end
-  end
+end
 
+task :environment do
+  require_relative './config/environment'
+end
+  
+namespace :db do
+  desc 'migrate changes to your database'
+  task :migrate => :environment do
+    Student.create_table
+  end
 end
